@@ -13,7 +13,8 @@ class MessageDispatcher
     # send to handler, with message as arg
 
     messages.each do |msg|
-      process_message msg
+      receipt = process_message msg
+      yield receipt if block_given?
     end
   end
 
@@ -24,5 +25,6 @@ class MessageDispatcher
     handler_name = "handle_#{message_name}"
 
     @handler.send handler_name, message
+    message.receipt
   end
 end

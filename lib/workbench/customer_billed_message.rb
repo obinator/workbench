@@ -4,6 +4,6 @@ class CustomerBilledMessage
   attr_accessor :order_id
 
   def receipt
-    # GOAL Implement message receipt formatted output
+    "Customer #{customer_id} billed for order #{order_id}"
   end
 end
