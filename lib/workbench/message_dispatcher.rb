@@ -6,12 +6,6 @@ class MessageDispatcher
   end
 
   def process(messages)
-    # GOAL Implement dispatching of messages to handler
-    # change class name to string
-    # strip "message"
-    # underscore the string to sym
-    # send to handler, with message as arg
-
     messages.each do |msg|
       receipt = process_message msg
       yield receipt if block_given?
