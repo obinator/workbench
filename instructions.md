@@ -3,7 +3,7 @@
 ## Goals
 
 - Implement the `MessageDispatcher#process` method, dispatching messages to the appropriate method of `ShippingHandler`
-- Implement the `receipt` method of each messages to provide the formatted output used as the message receipt
+- Implement the `receipt` method of each of the messages to provide the formatted output used as the message receipt
 - Print the expected output to standard out (see below)
 
 ## Expected Output
