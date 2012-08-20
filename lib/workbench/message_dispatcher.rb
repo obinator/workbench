@@ -4,6 +4,6 @@ class MessageDispatcher
   end
 
   def process(messages)
-    # Goal: Implement dispatching of messages to handler
+    # GOAL Implement dispatching of messages to handler
   end
 end

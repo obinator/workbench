@@ -4,6 +4,6 @@ class OrderAcceptedMessage
   attr_accessor :product_ids_in_order
 
   def receipt
-    to_s
+    # GOAL Implement message receipt formatted output
   end
 end

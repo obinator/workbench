@@ -1,20 +1,14 @@
-# Instructions for Increment 1
+# Instructions
 
-## Sketch
+## Goals
 
-Dispatch messages to 
-
-## Git Commits
-- Submit code in a single, squashed commit. Reviewing will be easier with a single, unified diff from the original
-
-## Tasks
-
-Implement 
+- Implement the `MessageDispatcher#process` method, dispatching messages to the appropriate method of `ShippingHandler`
+- Print the expected output to standard out (see below)
 
 ## Expected Output
 
 ShippingHander processing OrderAcceptedMessage
-Order 1 Accepted for customer 11
+Order 222 accepted for customer 111 for products 1, 2, and 3
 
 ShippingHander processing CustomerBilledMessage
-Customer 11 billed for order 1
+Customer 111 billed for order 222

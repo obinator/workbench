@@ -4,6 +4,6 @@ class CustomerBilledMessage
   attr_accessor :order_id
 
   def receipt
-    to_s
+    # GOAL Implement message receipt formatted output
   end
 end

@@ -1,5 +1,5 @@
-require_relative '../../init'
-require 'workbench/utilities/build_messages'
+require_relative 'init'
+require_relative 'utilities/build_messages'
 
 shipping_handler = ShippingHandler.new
 
