@@ -1,4 +1,3 @@
-
 # Instructions for Increment 1
 
 ## Sketch

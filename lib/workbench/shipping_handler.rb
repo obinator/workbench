@@ -4,6 +4,7 @@ class ShippingHandler
   end
 
   def handle_order_accepted(message)
+    data.product_ids_in_order = message.product_ids_in_order
     data.customer_id = message.customer_id
     data.order_id = message.order_id
   end
