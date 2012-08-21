@@ -12,7 +12,7 @@ Namespaces in Ruby are created by nesting modules. And in this case "module" can
 
 ## Goals
 
-Add namespaces to the project.
+### Nest Classes Within a Project Namespace
 
 All classes in the `workbench` directory should be part of the `workbench` namespace.
 
@@ -30,6 +30,18 @@ This may create problems where classes are referenced in code that are no longer
 Resolve any namespace conflicts that result from nesting classes in the `workbench` namespace.
 
 Ignore the code in the `utilities` directory. The code in this directory is really just a hack. It shouldn't be formalized in a namespace until there's a better understanding of a more permanent way of structuring it.
+
+### Replace Class Name Suffixes with Namespaces
+
+Create archetype suffixes in class names, eg: "message", and replace them with namespaces of the same name.
+
+Use the plural from of the suffix as the namespace.
+
+Replace the following suffixes:
+
+- Message
+- Data
+- Handler
 
 ## Expected Output
 
