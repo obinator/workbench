@@ -1,6 +1,8 @@
 require_relative 'init'
 require_relative 'utilities/build_messages'
 
+include Workbench
+
 shipping_handler = ShippingHandler.new
 
 dispatcher = MessageDispatcher.new shipping_handler
