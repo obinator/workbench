@@ -1,5 +1,7 @@
+#!/usr/bin/env ruby
+
 require_relative 'init'
-require_relative 'utilities/build_messages'
+require_relative 'support/build_messages'
 
 include Workbench
 
