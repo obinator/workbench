@@ -3,7 +3,7 @@ require_relative 'utilities/build_messages'
 
 include Workbench
 
-shipping_handler = ShippingHandler.new
+shipping_handler = Handlers::Shipping.new
 
 dispatcher = MessageDispatcher.new shipping_handler
 

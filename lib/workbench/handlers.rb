@@ -1,0 +1,1 @@
+require 'workbench/handlers/shipping'
