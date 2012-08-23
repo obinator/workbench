@@ -16,7 +16,7 @@ module Workbench
     def process_message(message)
       puts "#{@handler.class.name.demodulize} processing #{message.class.name.demodulize}"
 
-      message_name = message.class.name.demodulize.chomp("Message").underscore
+      message_name = message.class.name.demodulize.underscore
       handler_name = "handle_#{message_name}"
 
       @handler.send handler_name, message
