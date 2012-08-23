@@ -2,7 +2,6 @@
 
 require_relative 'init'
 require_relative 'support/examples'
-require_relative 'support/examples/messages'
 
 include Workbench
 
