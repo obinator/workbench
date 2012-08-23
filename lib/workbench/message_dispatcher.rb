@@ -6,21 +6,19 @@ module Workbench
       @handler = handler
     end
 
-    def process(messages)
+    def dispatch(messages)
       messages.each do |msg|
-        receipt = process_message msg
+        receipt = dispatch_message msg
         yield receipt if block_given?
       end
     end
 
-    def process_message(message)
-      puts "#{@handler.class.name.demodulize} processing #{message.class.name.demodulize}"
+    def dispatch_message(message)
+      @handler.handle message
+      puts "#{message.class.name.demodulize} dispatched to #{@handler.class.name.demodulize}"
 
-      message_name = message.class.name.demodulize.underscore
-      handler_name = "handle_#{message_name}"
-
-      @handler.send handler_name, message
       message.receipt
     end
   end
 end
+

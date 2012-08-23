@@ -5,6 +5,10 @@ module Workbench
       attr_accessor :customer_billed
       attr_accessor :order_id
 
+      def name
+        self.class.name.demodulize.underscore
+      end
+
       def receipt
         "Customer #{customer_id} billed for order #{order_id}"
       end

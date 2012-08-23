@@ -6,12 +6,12 @@ require_relative 'support/examples/messages'
 
 include Workbench
 
-shipping_handler = Handlers::Shipping.new
+handler = Handlers::Shipping.new
 
-dispatcher = MessageDispatcher.new shipping_handler
+dispatcher = MessageDispatcher.new handler
 
 order_accepted, customer_billed = Examples.messages
 
-dispatcher.process [order_accepted, customer_billed] do |receipt|
+dispatcher.dispatch [order_accepted, customer_billed] do |receipt|
   puts receipt
 end
