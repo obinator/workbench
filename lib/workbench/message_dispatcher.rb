@@ -1,5 +1,3 @@
-require 'active_support/core_ext/string'
-
 module Workbench
   class MessageDispatcher
     def initialize(handler)

@@ -1,4 +1,4 @@
+require 'active_support/core_ext/string'
+
+require 'workbench/message'
 require 'workbench/message_dispatcher'
-require 'workbench/handlers'
-require 'workbench/messages'
-require 'workbench/data'

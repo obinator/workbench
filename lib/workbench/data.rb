@@ -1,1 +1,0 @@
-require 'workbench/data/shipping'
