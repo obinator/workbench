@@ -1,4 +1,4 @@
 source :rubygems
 
-gem "activesupport"
-gem "factory_girl"
+gem 'activesupport'
+gem 'factory_girl
