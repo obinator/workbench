@@ -1,42 +1,29 @@
 # Instructions
 
-Ruby projects namespace their modules. "Module" in this case refers to a unit of design, rather than Ruby's `module` keyword.
+An endpoint can be expected to have multiple handlers that messages can be routed to. For the moment, the solution has a single handler, and this handler handles all messages.
 
-It's not necessary to namespace Ruby code, but naming collisions are more likely in absence of namespaces. Naming collisions would happen when you have a some module, and some third-party library you want to use also has a module of the same name. There would be no way to disambiguate one module from the other.
+The solution is now made up of two libraries, the `Workbench`, which is the messaging framework, and `Business`, which is the business logic library.
 
-In Ruby, two modules of the same name won't over-write each other, which would make potential problems more apparent due to one of the modules appearing to have gone missing. Instead, the modules would be merged into a single module - which increases the likelihood of unintended side-effects.
+Another handler has been added to the solution. The `SalesHandler` handles the `OrderReceived` message. The `SalesHandler` uses a new data class named `SalesData`.
 
-Namespaces in Ruby projects *typically* correspond to the directories in the project structure, and directories *typically* get namespaces.
-
-Namespaces in Ruby are created by nesting modules. And in this case "module" can refer to Ruby's `module`. It can also refer to a Ruby `class`. Although Ruby has some limited functional programing qualities, namespaces in Ruby aren't created through functions, as they would in a language like JavaScript, for example.
+Dispatch the correct messages to the correct handler.
 
 ## Goals
 
-Add namespaces to the project.
-
-All classes in the `workbench` directory should be part of the `workbench` namespace.
-
-For each class in the `workbench` project, nest the class in a module named "workbench".
-
-For example:
-
-    module Workbench
-      class MessageDispatcher
-      end
-    end
-
-This may create problems where classes are referenced in code that are no longer found due to the addition of namespaces. This is because the classes have moved from one namespace to another - from the root namespace to the `workbench` namespace.
-
-Resolve any namespace conflicts that result from nesting classes in the `workbench` namespace.
-
-Ignore the code in the `utilities` directory. The code in this directory is really just a hack. It shouldn't be formalized in a namespace until there's a better understanding of a more permanent way of structuring it.
+- Implement the SalesHandler
+- Enable the MessageDispatcher to work with multiple handlers
+- Update the examples helper and the factories to account for the new message
 
 ## Expected Output
 
-The output should remain the same when running sketch.rb:
+The output from the sketch should be:
+
+SalesHandler processing OrderReceivedMessage
+Order 222 received for customer 111 for products 1, 2, and 3
 
 ShippingHander processing OrderAcceptedMessage
 Order 222 accepted for customer 111 for products 1, 2, and 3
 
 ShippingHander processing CustomerBilledMessage
 Customer 111 billed for order 222
+
