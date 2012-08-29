@@ -12,16 +12,15 @@ module Workbench
     end
 
     def dispatch_message(message)
-      handler = select_handler(message)
+      handler = find_handler(message)
       handler.handle message
       puts "#{message.class.name.demodulize} message dispatched to #{handler.class.name.demodulize} handler"
 
       message.receipt
     end
 
-    def select_handler(message)
-      handler_name = Handler.name(message)
-      @handlers.find { |h| h.respond_to? handler_name }
+    def find_handler(message)
+      @handlers.find { |h| h.handles? message }
     end
   end
 end

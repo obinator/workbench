@@ -9,5 +9,9 @@ module Workbench
     def handle(message)
       send name(message), message
     end
+
+    def handles?(message)
+      respond_to? name(message)
+    end
   end
 end
