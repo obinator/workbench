@@ -1,7 +1,7 @@
 module Workbench
   class MessageDispatcher
-    def initialize(handler)
-      @handler = handler
+    def initialize(handlers)
+      @handlers = handlers
     end
 
     def dispatch(messages)
@@ -12,10 +12,16 @@ module Workbench
     end
 
     def dispatch_message(message)
-      @handler.handle message
-      puts "#{message.class.name.demodulize} dispatched to #{@handler.class.name.demodulize}"
+      handler = select_handler(message)
+      handler.handle message
+      puts "#{message.class.name.demodulize} message dispatched to #{handler.class.name.demodulize} handler"
 
       message.receipt
+    end
+
+    def select_handler(message)
+      handler_name = Handler.name(message)
+      @handlers.find { |h| h.respond_to? handler_name }
     end
   end
 end

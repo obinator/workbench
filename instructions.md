@@ -18,10 +18,10 @@ Dispatch the correct messages to the correct handler.
 
 The output from the sketch should be:
 
-    SalesHandler processing OrderReceivedMessage
+    OrderReceived message dispatched to Sales handler
     Order 222 received for customer 111 for products 1, 2, and 3
-    ShippingHander processing OrderAcceptedMessage
+    OrderAccepted message dispatched to Shipping handler
     Order 222 accepted for customer 111 for products 1, 2, and 3
-    ShippingHander processing CustomerBilledMessage
+    CustomerBilled message dispatched to Shipping handler
     Customer 111 billed for order 222
 
