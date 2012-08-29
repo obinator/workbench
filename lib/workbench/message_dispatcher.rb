@@ -6,22 +6,27 @@ module Workbench
 
     def dispatch(messages)
       messages.each do |msg|
-        receipt = dispatch_message msg
-        yield receipt if block_given?
-      end
-    end
+        dispatch_message msg do |receipt|
+          yield receipt
+        end
+      end # messages.each
+    end # dispatch
 
     def dispatch_message(message)
-      handler = find_handler(message)
-      handler.handle message
-      puts "#{message.class.name.demodulize} message dispatched to #{handler.class.name.demodulize} handler"
+      find_handlers message do |handler|
+        handler.handle message
+        puts "#{message.class.name.demodulize} message dispatched to #{handler.class.name.demodulize} handler"
 
-      message.receipt
-    end
+        yield message.receipt
+      end # find_handlers
+    end # dispatch_message
 
-    def find_handler(message)
-      @handlers.find { |h| h.handles? message }
-    end
-  end
-end
+    def find_handlers(message)
+      @handlers.each do |handler|
+        yield handler if handler.handles? message
+      end
+    end # find_handlers
+
+  end # MessageDispatcher
+end # Workbench
 
