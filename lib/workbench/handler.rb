@@ -8,6 +8,8 @@ module Workbench
 
     def handle(message)
       send name(message), message
+      receipt = MessageReceipt.build message, self
+      receipt
     end
 
     def handles?(message)
