@@ -15,7 +15,7 @@ The output from the sketch should be:
     OrderReceived message dispatched to Sales handler
     Order 222 received for customer 111 for products 1, 2, and 3
     OrderReceived message dispatched to Something handler
-    Something happened
+    Order 222 received for customer 111 for products 1, 2, and 3
     OrderAccepted message dispatched to Shipping handler
     Order 222 accepted for customer 111 for products 1, 2, and 3
     CustomerBilled message dispatched to Shipping handler

@@ -9,8 +9,8 @@ module Workbench
         dispatch_message msg do |receipt|
           yield receipt
         end
-      end # messages.each
-    end # dispatch
+      end
+    end
 
     def dispatch_message(message)
       find_handlers message do |handler|
@@ -18,15 +18,14 @@ module Workbench
         puts "#{message.class.name.demodulize} message dispatched to #{handler.class.name.demodulize} handler"
 
         yield message.receipt
-      end # find_handlers
-    end # dispatch_message
+      end
+    end
 
     def find_handlers(message)
       @handlers.each do |handler|
         yield handler if handler.handles? message
       end
-    end # find_handlers
+    end
 
-  end # MessageDispatcher
-end # Workbench
-
+  end
+end
