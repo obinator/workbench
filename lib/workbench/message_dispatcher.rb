@@ -14,7 +14,7 @@ module Workbench
 
     def dispatch_message(message)
       find_handlers message do |handler|
-        receipt = handler.handle message
+        receipt = handler.handle! message
         yield receipt
       end
     end
