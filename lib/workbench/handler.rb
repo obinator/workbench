@@ -1,38 +1,6 @@
 module Workbench
   module Handler
 
-    def self.included( base )
-      base.extend( ClassMethods )
-    end
-
-    module ClassMethods
-
-      def data( data_class )
-        @data_class = data_class
-      end
-
-      def data_class
-        @data_class
-      end
-
-      def handle( message, &block )
-        @handlers ||= {}
-        @handlers[ message ] = block
-      end
-
-      def handlers
-        @handlers
-      end
-
-      def started_by( *messages )
-        @starting_messages ||= []
-        messages.each do |message|
-          @starting_messages << message
-        end
-      end
-
-    end
-
     class DataContext
 
       attr_accessor :handler_context
@@ -91,12 +59,44 @@ module Workbench
         MessageReceipt.build message, handler
       end
 
+      def data
+        DataContext.new self
+      end
+
       def ready?
         true
       end
 
-      def data
-        DataContext.new self
+    end
+
+    def self.included( base )
+      base.extend( ClassMethods )
+    end
+
+    module ClassMethods
+
+      def data( data_class )
+        @data_class = data_class
+      end
+
+      def data_class
+        @data_class
+      end
+
+      def handle( message, &block )
+        @handlers ||= {}
+        @handlers[ message ] = block
+      end
+
+      def handlers
+        @handlers
+      end
+
+      def started_by( *messages )
+        @starting_messages ||= []
+        messages.each do |message|
+          @starting_messages << message
+        end
       end
 
     end
