@@ -44,7 +44,7 @@ module Workbench
       def copy( message, &block )
 
         fields_to_record = []
-        
+
         data_copy_context = DataCopyContext.new fields_to_record
         data_copy_context.instance_exec nil, &block
 
@@ -77,17 +77,16 @@ module Workbench
 
     class HandlerContext
 
-      attr_accessor :_message
+      attr_accessor :message
       attr_accessor :saga_data
 
       def initialize( data_class, message )
         @saga_data = data_class.new
-        @_message = message
+        @message = message
       end
 
       def complete
-        receipt = MessageReceipt.build self._message, self
-        receipt
+        MessageReceipt.build message, self
       end
 
       def ready?
