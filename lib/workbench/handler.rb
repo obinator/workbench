@@ -77,16 +77,18 @@ module Workbench
 
     class HandlerContext
 
+      attr_accessor :handler
       attr_accessor :message
       attr_accessor :saga_data
 
-      def initialize( data_class, message )
-        @saga_data = data_class.new
+      def initialize( data_class, message, handler )
+        @handler = handler
         @message = message
+        @saga_data = data_class.new
       end
 
       def complete
-        MessageReceipt.build message, self
+        MessageReceipt.build message, handler
       end
 
       def ready?
@@ -103,7 +105,7 @@ module Workbench
 
     def handle!( message )
       handler = self.class.handlers[ message.name.to_sym ]
-      handler_context = HandlerContext.new self.class.data_class, message
+      handler_context = HandlerContext.new self.class.data_class, message, self
       handler_context.instance_exec message, &handler
     end
 
